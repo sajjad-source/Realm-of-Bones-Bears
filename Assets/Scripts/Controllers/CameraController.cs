@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * https://discussions.unity.com/t/how-do-i-make-the-camera-zoom-in-and-out-with-the-mouse-wheel/36739/2
+ * https://stackoverflow.com/questions/43187019/moving-camera-around-an-object-in-unity
+ */
 public class CameraController : MonoBehaviour
 {
 

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+/*
+ * https://sleepingdaemon.medium.com/unity3d-learn-how-to-point-and-click-to-move-11c5ec609b80
+ * https://docs.unity3d.com/ScriptReference/AI.NavMeshAgent.SetDestination.html
+ */
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerMotor : MonoBehaviour
 {

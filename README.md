@@ -10,6 +10,7 @@ This Unity project is an interactive game featuring a comprehensive inventory sy
 - **Inventory System**: Using `Inventory.cs`, `InventoryUI.cs`, and `InventorySlot.cs`, the game features a robust inventory system for managing and using items.
 - **Equipment Management**: Equip and manage items with `Equipment.cs` and `EquipmentManager.cs`, allowing for changes in player stats and appearance.
 - **Enemy AI**: Enemies, managed by `Enemy.cs` and `EnemyController.cs`, can detect and follow the player, providing engaging gameplay challenges.
+- **Enemy Types**: Fight or avoid enemies such as Bears, managed by `Bear.cs` and Skeletons, managed by `Skeleton.cs`.
 - **Item Interaction**: Collect items in the world with `ItemPickup.cs`, which allows players to add items to their inventory by interacting with them.
 - **Items**: Define game items using the `Item.cs` script, which can be extended for various types of items such as equipment and consumables.
 
@@ -27,7 +28,7 @@ This Unity project is an interactive game featuring a comprehensive inventory sy
   - Movement, interaction, and camera control: `PlayerController.cs`, `CameraController.cs`.
   - Inventory system: `Inventory.cs`, `InventoryUI.cs`, `InventorySlot.cs`.
   - Equipment management: `Equipment.cs`, `EquipmentManager.cs`.
-  - Enemy AI and behavior: `Enemy.cs`, `EnemyController.cs`.
+  - Enemy AI and behavior: `Enemy.cs`, `EnemyController.cs`, `Bear.cs`, `Skeleton.cs`.
   - Item interaction and definition: `Interactable.cs`, `Item.cs`, `ItemPickup.cs`.
 
 ## Contributing

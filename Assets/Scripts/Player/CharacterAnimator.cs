@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class CharacterAnimator : MonoBehaviour
 {
-    const float locomotionAnimationSmoothTime = 0.1f;
+    const float velocity = 0.1f;
     
     Animator animator;
     NavMeshAgent agent;
@@ -19,6 +19,6 @@ public class CharacterAnimator : MonoBehaviour
     void Update()
     {
         float speedPercent = agent.velocity.magnitude / agent.speed;
-        animator.SetFloat("speedPercent", speedPercent, locomotionAnimationSmoothTime, Time.deltaTime);
+        animator.SetFloat("speedPercent", speedPercent, velocity, Time.deltaTime);
     }
 }

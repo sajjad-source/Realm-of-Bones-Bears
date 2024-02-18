@@ -9,9 +9,6 @@ public class Item : ScriptableObject
 
     public virtual void Use()
     {
-        // Use item
-
-        Debug.Log("Using" + itemName);
     }
 
     public void RemoveFromInventory ()

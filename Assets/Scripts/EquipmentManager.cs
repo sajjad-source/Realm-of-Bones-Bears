@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 
+/*
+ * https://pavcreations.com/equipment-system-for-an-rpg-unity-game/
+ */
 public class EquipmentManager : MonoBehaviour
 {
     public static EquipmentManager instance;
@@ -14,6 +17,11 @@ public class EquipmentManager : MonoBehaviour
     public GameObject chestSlot;
     public GameObject legsSlot;
     public GameObject capeSlot;
+    public GameObject axeSlot;
+    public GameObject keySlot;
+
+    public GameObject fish;
+    public GameObject enemy;
 
     private void Awake()
     {
@@ -23,7 +31,8 @@ public class EquipmentManager : MonoBehaviour
         equipmentSlotObjects[EquipmentSlot.Chest] = chestSlot;
         equipmentSlotObjects[EquipmentSlot.Legs] = legsSlot;
         equipmentSlotObjects[EquipmentSlot.Cape] = capeSlot;
-
+        equipmentSlotObjects[EquipmentSlot.Weapon] = axeSlot;
+        equipmentSlotObjects[EquipmentSlot.Key] = keySlot;
 
     }
 
@@ -39,21 +48,18 @@ public class EquipmentManager : MonoBehaviour
     {
         int slotIdx = (int)newItem.equipSlot;
 
-        Equipment oldItem = null;
-        if (currentEquipment[slotIdx] != null)
-        {
-            oldItem = currentEquipment[slotIdx];
-            Inventory.instance.Add(oldItem);
-        }
-
-        if (onEquipmentChange != null)
-        {
-            onEquipmentChange.Invoke(newItem, oldItem);
-        }
-
         currentEquipment[slotIdx] = newItem;
 
-        if (equipmentSlotObjects.TryGetValue(newItem.equipSlot, out GameObject slotObject))
+        if (newItem.equipSlot == EquipmentSlot.Food)
+        {
+            enemy.GetComponentInChildren<Animator>().SetBool("Eat", true);
+            enemy.GetComponentInChildren<Bear>().attackRange = 0f;
+            enemy.GetComponentInChildren<Bear>().lookRadius = 0f;
+            fish.SetActive(true);
+            Debug.Log("Using Food");
+          
+        }
+        else if (equipmentSlotObjects.TryGetValue(newItem.equipSlot, out GameObject slotObject))
         {
             if (slotObject != null)
             {
@@ -64,25 +70,14 @@ public class EquipmentManager : MonoBehaviour
 
     public void Unequip(int slotIndex)
     {
-        if (currentEquipment[slotIndex] != null)
+        currentEquipment[slotIndex] = null;
+        EquipmentSlot slot = (EquipmentSlot)slotIndex;
+
+        if (equipmentSlotObjects.TryGetValue(slot, out GameObject slotObject))
         {
-            Equipment oldItem = currentEquipment[slotIndex];
-            Inventory.instance.Add(oldItem);
-
-            currentEquipment[slotIndex] = null;
-            EquipmentSlot slot = (EquipmentSlot)slotIndex;
-
-            if (onEquipmentChange != null)
+            if (slotObject != null)
             {
-                onEquipmentChange.Invoke(null, oldItem);
-            }
-
-            if (equipmentSlotObjects.TryGetValue(slot, out GameObject slotObject))
-            {
-                if (slotObject != null)
-                {
-                    slotObject.SetActive(false);
-                }
+                slotObject.SetActive(false);
             }
         }
     }

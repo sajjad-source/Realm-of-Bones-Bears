@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * https://gamedevbeginner.com/how-to-make-an-inventory-system-in-unity/
+ * https://www.youtube.com/watch?v=AoD_F1fSFFg&ab_channel=SoloGameDev
+ * 
+ */
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
